@@ -9,14 +9,17 @@ services:
     networks:
       - net
 
-    detectem:
+  detectem:
     build:
       context: ./detectem
     command: python run.py
+    environment:
+      - SETUP_SPLASH=False
+      - SPLASH_URL=http://splash:8050
     depends_on:
       - splash
     ports:
-      - 8080:8080
+      - 5723:5723
     networks:
       - net
 
