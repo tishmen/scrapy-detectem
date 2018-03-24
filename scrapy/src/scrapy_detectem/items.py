@@ -7,10 +7,11 @@ class DetectemItem(object):
 
     url = Field()
     data = Field()
+    timestamp = Field()
 
 
 class DetectemLoader(ItemLoader):
 
     default_item_class = DetectemItem
-    url_out = TakeFirst()
+    default_output_processor = TakeFirst()
     data_out = Identity()
