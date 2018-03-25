@@ -23,6 +23,17 @@ services:
     networks:
       - net
 
+  scrapy:
+    build:
+      context: ./scrapy
+    command: scrapy crawl detectem -a start_urls='["http://quotes.toscrape.com/"]'
+    environment:
+      - DETECTEM_URL=http://detectem:8080/detect
+    depends_on:
+      - detectem
+    networks:
+      - net
+
 
 networks:
   net:
