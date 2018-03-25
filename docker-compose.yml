@@ -1,6 +1,11 @@
 version: '3.3'
 
+
+# Docker compose services
+
 services:
+
+  # Service for rendering Javascript in a Splash browser
 
   splash:
     image: scrapinghub/splash
@@ -8,6 +13,8 @@ services:
       - 8050:8050
     networks:
       - net
+
+  # Service for detecting website software and technologies
 
   detectem:
     build:
@@ -23,6 +30,8 @@ services:
     networks:
       - net
 
+  # Crawling service
+
   scrapy:
     build:
       context: ./scrapy
@@ -34,6 +43,8 @@ services:
     networks:
       - net
 
+
+# Docker compose networks
 
 networks:
   net:
