@@ -34,15 +34,19 @@ class DetectemSpider(Spider):
 
     def _load_item(self, response):
         loader = DetectemLoader()
-        loader.add_value('url', response.url)
+        loader.add_value('url', response.meta['url'])
         loader.add_value('data', json.loads(response.body_as_unicode()))
         loader.add_value('timestamp', datetime.utcnow().isoformat())
         return loader.load_item()
 
     def start_requests(self):
         for url in self.start_urls:
+            data = {'url': url}
             yield FormRequest(
-                self.detectem_url, method='POST', formdata={'url': url}
+                self.detectem_url,
+                method='POST',
+                formdata=data,
+                meta=data
             )
 
     def parse(self, response):
