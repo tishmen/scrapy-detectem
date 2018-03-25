@@ -51,10 +51,7 @@ class DetectemSpider(Spider):
         for url in self.start_urls:
             data = {'url': url}
             yield FormRequest(
-                self.detectem_url,
-                method='POST',
-                formdata=data,
-                meta=data
+                self.detectem_url, method='POST', formdata=data, meta=data
             )
 
     def parse(self, response):
