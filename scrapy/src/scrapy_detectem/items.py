@@ -3,7 +3,7 @@ from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst, Identity
 
 
-class DetectemItem(object):
+class DetectemItem(Item):
 
     url = Field()
     data = Field()
