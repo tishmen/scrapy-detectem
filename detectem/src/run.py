@@ -9,7 +9,7 @@ from detectem.ws import do_detection
 def main():
     '''Run bottle server.'''
     bottle.debug(DEBUG)
-    bottle.run(host='0.0.0.0', port=8080, server='gunicorn', workers=4)
+    bottle.run(host='0.0.0.0', port=8080, server='gunicorn', workers=20)
 
 
 # Execute main
